@@ -1,0 +1,43 @@
+{
+	"expert": "yes",
+	"cli": false,
+	"adapterName": "template_react",
+	"title": "Template React",
+	"description": "Template React with AlCalzone Hooks",
+	"keywords": "",
+	"contributors": "",
+	"authorName": "Issi",
+	"authorGithub": "xXBJXx",
+	"authorEmail": "issi.dev.iobroker@gmail.com",
+	"features": ["adapter"],
+	"adminFeatures": [],
+	"type": "hardware",
+	"startMode": "daemon",
+	"connectionType": "local",
+	"dataSource": "poll",
+	"connectionIndicator": "yes",
+	"adapterSettings": [
+		{
+			"key": "option1",
+			"defaultValue": true,
+			"inputType": "checkbox"
+		},
+		{
+			"key": "option2",
+			"defaultValue": "42",
+			"inputType": "text"
+		}
+	],
+	"language": "TypeScript",
+	"adminReact": "yes",
+	"releaseScript": "yes",
+	"indentation": "Tab",
+	"quotes": "single",
+	"es6class": "yes",
+	"tools": ["ESLint", "Prettier", "code coverage"],
+	"gitRemoteProtocol": "HTTPS",
+	"license": "MIT License",
+	"dependabot": "yes",
+	"target": "github",
+	"creatorVersion": "2.0.1"
+}

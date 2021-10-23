@@ -1,0 +1,94 @@
+{
+	"common": {
+		"name": "template_react",
+		"version": "0.0.1",
+		"news": {
+			"0.0.1": {
+				"en": "initial release",
+				"de": "Erstveröffentlichung",
+				"ru": "Начальная версия",
+				"pt": "lançamento inicial",
+				"nl": "Eerste uitgave",
+				"fr": "Première version",
+				"it": "Versione iniziale",
+				"es": "Versión inicial",
+				"pl": "Pierwsze wydanie",
+				"zh-cn": "首次出版"
+			}
+		},
+		"title": "Template React",
+		"titleLang": {
+			"en": "Template React",
+			"de": "Vorlage reagieren",
+			"ru": "Шаблон React",
+			"pt": "Modelo de reação",
+			"nl": "Sjabloon Reageren",
+			"fr": "Modèle Réagir",
+			"it": "Modello Reagire",
+			"es": "Plantilla Reaccionar",
+			"pl": "Szablon Reaguj",
+			"zh-cn": "模板反应"
+		},
+		"desc": {
+			"en": "Template React with AlCalzone Hooks",
+			"de": "Template React mit AlCalzone Hooks",
+			"ru": "Шаблон React с хуками AlCalzone",
+			"pt": "Reação do modelo com ganchos AlCalzone",
+			"nl": "Sjabloon Reageren met AlCalzone Hooks",
+			"fr": "Modèle Réagissez avec les crochets AlCalzone",
+			"it": "Modello Reagire con Ganci AlCalzone",
+			"es": "Plantilla Reaccionar con ganchos de AlCalzone",
+			"pl": "Szablon React z hakami AlCalzone",
+			"zh-cn": "模板与 AlCalzone Hooks 反应"
+		},
+		"authors": ["Issi <issi.dev.iobroker@gmail.com>"],
+		"keywords": ["ioBroker", "template", "Smart Home", "home automation"],
+		"license": "MIT",
+		"platform": "Javascript/Node.js",
+		"main": "build/main.js",
+		"icon": "template_react.png",
+		"enabled": true,
+		"extIcon": "https://raw.githubusercontent.com/xXBJXx/ioBroker.template_react/main/admin/template_react.png",
+		"readme": "https://github.com/xXBJXx/ioBroker.template_react/blob/main/README.md",
+		"loglevel": "info",
+		"mode": "daemon",
+		"type": "hardware",
+		"compact": true,
+		"connectionType": "local",
+		"dataSource": "poll",
+		"materialize": true,
+		"dependencies": [
+			{
+				"js-controller": ">=2.0.0"
+			}
+		]
+	},
+	"native": {
+		"option1": true,
+		"option2": "42"
+	},
+	"objects": [],
+	"instanceObjects": [
+		{
+			"_id": "info",
+			"type": "channel",
+			"common": {
+				"name": "Information"
+			},
+			"native": {}
+		},
+		{
+			"_id": "info.connection",
+			"type": "state",
+			"common": {
+				"role": "indicator.connected",
+				"name": "Device or service connected",
+				"type": "boolean",
+				"read": true,
+				"write": false,
+				"def": false
+			},
+			"native": {}
+		}
+	]
+}
