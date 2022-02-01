@@ -27,7 +27,7 @@
 	"@emotion/styled": "^11.6.0",
 	"@iobroker/adapter-react": "2.0.14",
 	"@iobroker/dev-server": "^0.4.0",
-	"@iobroker/socket-client": "^1.0.9",
+	"@iobroker/socket-client": "^1.0.10",
 	"@iobroker/testing": "^2.5.2",
 	"@mui/icons-material": "^5.2.5",
 	"@mui/material": "^5.2.6",
