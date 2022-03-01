@@ -28,7 +28,7 @@
 	"@iobroker/adapter-react": "2.0.21",
 	"@iobroker/dev-server": "^0.4.0",
 	"@iobroker/socket-client": "^1.0.10",
-	"@iobroker/testing": "^2.5.3",
+	"@iobroker/testing": "^2.5.4",
 	"@mui/icons-material": "^5.4.4",
 	"@mui/material": "^5.3.1",
 	"@mui/styles": "^5.4.4",
