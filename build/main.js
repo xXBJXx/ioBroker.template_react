@@ -8,7 +8,7 @@ var __getOwnPropSymbols = Object.getOwnPropertySymbols;
 var __getProtoOf = Object.getPrototypeOf;
 var __hasOwnProp = Object.prototype.hasOwnProperty;
 var __propIsEnum = Object.prototype.propertyIsEnumerable;
-var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
 var __spreadValues = (a, b) => {
   for (var prop in b || (b = {}))
     if (__hasOwnProp.call(b, prop))
@@ -21,19 +21,16 @@ var __spreadValues = (a, b) => {
   return a;
 };
 var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
-var __markAsModule = (target) => __defProp(target, "__esModule", {value: true});
-var __reExport = (target, module2, desc) => {
-  if (module2 && typeof module2 === "object" || typeof module2 === "function") {
-    for (let key of __getOwnPropNames(module2))
-      if (!__hasOwnProp.call(target, key) && key !== "default")
-        __defProp(target, key, {get: () => module2[key], enumerable: !(desc = __getOwnPropDesc(module2, key)) || desc.enumerable});
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
   }
-  return target;
+  return to;
 };
-var __toModule = (module2) => {
-  return __reExport(__markAsModule(__defProp(module2 != null ? __create(__getProtoOf(module2)) : {}, "default", module2 && module2.__esModule && "default" in module2 ? {get: () => module2.default, enumerable: true} : {value: module2, enumerable: true})), module2);
-};
-var utils = __toModule(require("@iobroker/adapter-core"));
+var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(isNodeMode || !mod || !mod.__esModule ? __defProp(target, "default", { value: mod, enumerable: true }) : target, mod));
+var utils = __toESM(require("@iobroker/adapter-core"));
 class TemplateReact extends utils.Adapter {
   constructor(options = {}) {
     super(__spreadProps(__spreadValues({}, options), {
@@ -46,7 +43,7 @@ class TemplateReact extends utils.Adapter {
   async onReady() {
     this.setState("info.connection", false, true);
     this.log.info("config option1: " + this.config.option1);
-    this.log.info("config option2: " + this.config.option2);
+    this.log.info("config testInput: " + this.config.testInput);
     await this.setObjectNotExistsAsync("testVariable", {
       type: "state",
       common: {
@@ -60,8 +57,8 @@ class TemplateReact extends utils.Adapter {
     });
     this.subscribeStates("testVariable");
     await this.setStateAsync("testVariable", true);
-    await this.setStateAsync("testVariable", {val: true, ack: true});
-    await this.setStateAsync("testVariable", {val: true, ack: true, expire: 30});
+    await this.setStateAsync("testVariable", { val: true, ack: true });
+    await this.setStateAsync("testVariable", { val: true, ack: true, expire: 30 });
     let result = await this.checkPasswordAsync("admin", "iobroker");
     this.log.info("check user admin pw iobroker: " + result);
     result = await this.checkGroupAsync("admin", "admin");

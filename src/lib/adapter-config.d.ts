@@ -6,6 +6,7 @@ declare global {
 		interface AdapterConfig {
 			option1: boolean;
 			testInput: string;
+			testOutput: string;
 		}
 	}
 }

@@ -2,5 +2,6 @@
   "template_react adapter settings": "Adaptereinstellungen für template_react",
   "option1": "Option 1",
   "tooltip": "das ist ein tooltip",
-  "textinput": "Text Input"
+  "textinput": "Text Input",
+  "textOutput": "Text Output"
 }

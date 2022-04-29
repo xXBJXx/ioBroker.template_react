@@ -72,7 +72,8 @@
   },
   "native": {
 	"option1": true,
-	"testInput": "Test Input"
+	"testInput": "Test Input",
+	"testOutput": "Text"
   },
   "objects": [],
   "instanceObjects": [

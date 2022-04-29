@@ -4,29 +4,28 @@ var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __getOwnPropNames = Object.getOwnPropertyNames;
 var __getProtoOf = Object.getPrototypeOf;
 var __hasOwnProp = Object.prototype.hasOwnProperty;
-var __markAsModule = (target) => __defProp(target, "__esModule", {value: true});
 var __export = (target, all) => {
   for (var name in all)
-    __defProp(target, name, {get: all[name], enumerable: true});
+    __defProp(target, name, { get: all[name], enumerable: true });
 };
-var __reExport = (target, module2, desc) => {
-  if (module2 && typeof module2 === "object" || typeof module2 === "function") {
-    for (let key of __getOwnPropNames(module2))
-      if (!__hasOwnProp.call(target, key) && key !== "default")
-        __defProp(target, key, {get: () => module2[key], enumerable: !(desc = __getOwnPropDesc(module2, key)) || desc.enumerable});
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
   }
-  return target;
+  return to;
 };
-var __toModule = (module2) => {
-  return __reExport(__markAsModule(__defProp(module2 != null ? __create(__getProtoOf(module2)) : {}, "default", module2 && module2.__esModule && "default" in module2 ? {get: () => module2.default, enumerable: true} : {value: module2, enumerable: true})), module2);
-};
-__markAsModule(exports);
-__export(exports, {
+var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(isNodeMode || !mod || !mod.__esModule ? __defProp(target, "default", { value: mod, enumerable: true }) : target, mod));
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+var tools_exports = {};
+__export(tools_exports, {
   isArray: () => isArray,
   isObject: () => isObject,
   translateText: () => translateText
 });
-var import_axios = __toModule(require("axios"));
+module.exports = __toCommonJS(tools_exports);
+var import_axios = __toESM(require("axios"));
 function isObject(it) {
   return Object.prototype.toString.call(it) === "[object Object]";
 }
@@ -54,7 +53,7 @@ async function translateYandex(text, targetLang, apiKey) {
   }
   try {
     const url = `https://translate.yandex.net/api/v1.5/tr.json/translate?key=${apiKey}&text=${encodeURIComponent(text)}&lang=en-${targetLang}`;
-    const response = await import_axios.default.request({url, timeout: 15e3});
+    const response = await import_axios.default.request({ url, timeout: 15e3 });
     if (isArray((_a = response.data) == null ? void 0 : _a.text)) {
       return response.data.text[0];
     }
@@ -67,7 +66,7 @@ async function translateGoogle(text, targetLang) {
   var _a;
   try {
     const url = `http://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=${targetLang}&dt=t&q=${encodeURIComponent(text)}&ie=UTF-8&oe=UTF-8`;
-    const response = await import_axios.default.request({url, timeout: 15e3});
+    const response = await import_axios.default.request({ url, timeout: 15e3 });
     if (isArray(response.data)) {
       return response.data[0][0][0];
     }
