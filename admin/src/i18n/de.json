@@ -3,5 +3,7 @@
   "option1": "Option 1",
   "tooltip": "das ist ein tooltip",
   "textinput": "Text Input",
-  "textOutput": "Text Output"
+  "buttonOutput": "Button Output",
+  "datapoint": "ioBroker Datenpunkt"
+
 }

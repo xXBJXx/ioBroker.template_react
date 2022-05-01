@@ -73,7 +73,28 @@
   "native": {
 	"option1": true,
 	"testInput": "Test Input",
-	"testOutput": "Text"
+	"testOutput": "Text",
+	"stateID": "admin.0.info.connection",
+	"tableValues": [
+	  {
+		"name": "Frozen yoghurt",
+		"ip": "192.0.0.1",
+		"port": "80",
+		"password": "123"
+	  },
+	  {
+		"name": "Ice cream sandwich",
+		"ip": "192.0.0.2",
+		"port": "80",
+		"password": "12345"
+	  },
+	  {
+		"name": "Eclair",
+		"ip": "192.0.0.3",
+		"port": "80",
+		"password": "1234567"
+	  }
+	]
   },
   "objects": [],
   "instanceObjects": [

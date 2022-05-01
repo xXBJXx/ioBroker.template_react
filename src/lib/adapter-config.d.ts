@@ -7,6 +7,13 @@ declare global {
 			option1: boolean;
 			testInput: string;
 			testOutput: string;
+			stateID: string;
+			tableValues: {
+				name: string;
+				ip: string;
+				port: number;
+				password: string;
+			}[];
 		}
 	}
 }

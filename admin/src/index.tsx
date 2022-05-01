@@ -7,20 +7,20 @@ import theme from '@iobroker/adapter-react/Theme';
 import Utils from '@iobroker/adapter-react/Components/Utils';
 // UI elements are imported from Material-UI
 import { ThemeProvider } from '@mui/material/styles';
-import { useSettings, useI18n } from 'iobroker-react/hooks';
+import { useSettings } from 'iobroker-react/hooks';
 import { SettingPage } from './SettingPage';
 
 // Components are imported here
 
 const themeName = Utils.getThemeName();
+
 // eslint-disable-next-line react/display-name
 const SettingsPageContent: React.FC = React.memo(() => {
 	// settings is the current settings object, including the changes made in the UI
 	// originalSettings is the original settings object, as it was loaded from ioBroker
 	// setSettings is used to update the current settings object
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	const { settings, originalSettings, setSettings } = useSettings<ioBroker.AdapterConfig>();
-
-	const { translate: _ } = useI18n();
 
 	// Updates the settings when the checkbox changes. The changes are not saved yet.
 	const handleChange = <T extends keyof ioBroker.AdapterConfig>(option: T, value: ioBroker.AdapterConfig[T]) => {
@@ -42,8 +42,6 @@ const migrateSettings = (settings: ioBroker.AdapterConfig) => {
 	// In this case, option1 will be set to true by default
 	if (settings.option1 === undefined) {
 		settings.option1 = true;
-		settings.testInput = 'Test Input';
-		settings.testOutput = 'Test Output';
 	}
 };
 
