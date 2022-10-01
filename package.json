@@ -19,7 +19,7 @@
 	"url": "https://github.com/xXBJXx/ioBroker.template_react"
   },
   "dependencies": {
-	"@iobroker/adapter-core": "^2.6.0"
+	"@iobroker/adapter-core": "^2.6.6"
   },
   "devDependencies": {
 	"@alcalzone/release-script": "^3.5.9",
