@@ -54,7 +54,7 @@
 	"platform": "Javascript/Node.js",
 	"main": "build/main.js",
 	"icon": "template_react.png",
-	"enabled": true,
+	"enabled": false,
 	"extIcon": "https://raw.githubusercontent.com/xXBJXx/ioBroker.template_react/main/admin/template_react.png",
 	"readme": "https://github.com/xXBJXx/ioBroker.template_react/blob/main/README.md",
 	"loglevel": "info",
@@ -64,37 +64,34 @@
 	"connectionType": "local",
 	"dataSource": "poll",
 	"materialize": true,
+	"adminUI": {
+	  "config": "materialize"
+	},
+	"eraseOnUpload": true,
 	"dependencies": [
 	  {
-		"js-controller": ">=2.0.0"
+		"js-controller": ">=3.3.22"
+	  }
+	],
+	"globalDependencies": [
+	  {
+		"admin": ">=5.0.0"
 	  }
 	]
   },
+  "protectedNative": [
+	"password"
+  ],
+  "encryptedNative": [
+	"password"
+  ],
   "native": {
 	"option1": true,
-	"testInput": "Test Input",
-	"testOutput": "Text",
-	"stateID": "admin.0.info.connection",
-	"tableValues": [
-	  {
-		"name": "Frozen yoghurt",
-		"ip": "192.0.0.1",
-		"port": "80",
-		"password": "123"
-	  },
-	  {
-		"name": "Ice cream sandwich",
-		"ip": "192.0.0.2",
-		"port": "80",
-		"password": "12345"
-	  },
-	  {
-		"name": "Eclair",
-		"ip": "192.0.0.3",
-		"port": "80",
-		"password": "1234567"
-	  }
-	]
+	"password": "",
+	"testInput": "",
+	"testOutput": "",
+	"stateID": "",
+	"tableValues": []
   },
   "objects": [],
   "instanceObjects": [

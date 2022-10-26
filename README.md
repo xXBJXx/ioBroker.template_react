@@ -5,7 +5,6 @@
 [![Downloads](https://img.shields.io/npm/dm/iobroker.template_react.svg)](https://www.npmjs.com/package/iobroker.template_react)
 ![Number of Installations](https://iobroker.live/badges/template_react-installed.svg)
 ![Current version in stable repository](https://iobroker.live/badges/template_react-stable.svg)
-[![Dependency Status](https://img.shields.io/david/xXBJXx/iobroker.template_react.svg)](https://david-dm.org/xXBJXx/iobroker.template_react)
 
 [![NPM](https://nodei.co/npm/iobroker.template_react.png?downloads=true)](https://nodei.co/npm/iobroker.template_react/)
 
@@ -99,10 +98,11 @@ Please refer to the [`dev-server` documentation](https://github.com/ioBroker/dev
 ### **WORK IN PROGRESS**
 * (Issi) initial release
 
+
 ## License
 MIT License
 
-Copyright (c) 2021 Issi <issi.dev.iobroker@gmail.com>
+Copyright (c) 2021-2022 Issi <issi.dev.iobroker@gmail.com>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

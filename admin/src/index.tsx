@@ -1,13 +1,13 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-// import from iobroker-react docu page => https://github.com/AlCalzone/iobroker-react
-import { SettingsApp } from 'iobroker-react/app';
-import type { Translations } from 'iobroker-react/i18n';
-import theme from '@iobroker/adapter-react/Theme';
-import Utils from '@iobroker/adapter-react/Components/Utils';
+import Utils from '@iobroker/adapter-react-v5/Components/Utils';
+import theme from '@iobroker/adapter-react-v5/Theme';
 // UI elements are imported from Material-UI
 import { ThemeProvider } from '@mui/material/styles';
+// import from iobroker-react docu page => https://github.com/AlCalzone/iobroker-react
+import { SettingsApp } from 'iobroker-react/app';
 import { useSettings } from 'iobroker-react/hooks';
+import type { Translations } from 'iobroker-react/i18n';
+import React from 'react';
+import ReactDOM from 'react-dom';
 import { SettingPage } from './SettingPage';
 
 // Components are imported here

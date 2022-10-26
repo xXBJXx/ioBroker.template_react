@@ -1,20 +1,13 @@
 /**
  * Created by alex-issi on 01.05.22
  */
+import { Delete } from '@mui/icons-material';
+import { IconButton, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
+import { useI18n, useIoBrokerObject } from 'iobroker-react/hooks';
+import { encrypt } from 'iobroker-react/lib/shared/tools';
 import React, { useState } from 'react';
-import { useI18n } from 'iobroker-react/hooks';
-import {
-	Button,
-	IconButton,
-	Paper,
-	Table,
-	TableBody,
-	TableCell,
-	TableContainer,
-	TableHead,
-	TableRow,
-} from '@mui/material';
-import { Delete, Add } from '@mui/icons-material';
+import { AddModal } from './component/AddModal';
+import { Row } from './component/AddTableDialog';
 
 interface CustomTableProps {
 	onChange: (
@@ -24,31 +17,36 @@ interface CustomTableProps {
 	setting: ioBroker.AdapterConfig;
 }
 
-const dummyData = { name: 'test', ip: '11.1.1.1', port: 81, password: '12345' };
-
 export const CustomTable: React.FC<CustomTableProps> = ({ setting, onChange }): JSX.Element => {
+	// System Secret for encryption
+	const [systemConfigObj] = useIoBrokerObject('system.config');
+	const secret = systemConfigObj?.native?.secret || 'Zgfr56gFe87jJOM';
+	// Translation function
 	const { translate: _ } = useI18n();
+	// rows of the table
 	const [rows, setRows] = useState(setting.tableValues);
 
+	//delete row
 	const handleDelete = (name: string) => {
 		const newRows = rows.filter((row) => row.name !== name);
 		setRows(newRows);
 		onChange('tableValues', newRows);
 	};
 
-	const handleAdd = () => {
-		const newRows = [...rows, dummyData];
-		setRows(newRows);
-		onChange('tableValues', newRows);
+	//add row
+	const handleAdd = (value: Row | undefined) => {
+		if (value) {
+			const newRows = [...rows, value];
+			setRows(newRows);
+			onChange('tableValues', newRows);
+		}
 	};
 
 	const random = (): number => Math.floor(Math.random() * 100);
 
 	return (
 		<React.Fragment>
-			<Button aria-label="delete" sx={{ bgcolor: '#292828FF' }} onClick={() => handleAdd()}>
-				<Add sx={{ color: 'green' }} />
-			</Button>
+			<AddModal newRow={(value) => handleAdd(value)} />
 			<TableContainer component={Paper}>
 				<Table sx={{ minWidth: 650 }} size="small" aria-label="simple table">
 					<TableHead>
@@ -61,15 +59,17 @@ export const CustomTable: React.FC<CustomTableProps> = ({ setting, onChange }): 
 						</TableRow>
 					</TableHead>
 					<TableBody>
-						{rows.map((row) => (
+						{rows.map((row, index) => (
 							<TableRow
 								key={row.name + random()}
 								sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
 							>
-								<TableCell align="center">{row.name}</TableCell>
+								<TableCell id={'name'} align="center">
+									{row.name}
+								</TableCell>
 								<TableCell align="center">{row.ip}</TableCell>
 								<TableCell align="center">{row.port}</TableCell>
-								<TableCell align="center">{row.password}</TableCell>
+								<TableCell align="center">{encrypt(secret, row.password)}</TableCell>
 								<TableCell align={'center'}>
 									<IconButton aria-label="delete" onClick={() => handleDelete(row.name)}>
 										<Delete sx={{ color: 'red' }} />

@@ -5,9 +5,12 @@
 // The adapter-core module gives you access to the core ioBroker functions
 // you need to create an adapter
 import * as utils from '@iobroker/adapter-core';
-
 // Load your modules here, e.g.:
-// import * as fs from "fs";
+
+// variable with the native-secret for decryption
+let secret: string | any[] = 'Zgfr56gFe87jJOM';
+
+// Global variables here
 
 class TemplateReact extends utils.Adapter {
 	public constructor(options: Partial<utils.AdapterOptions> = {}) {
@@ -31,11 +34,19 @@ class TemplateReact extends utils.Adapter {
 		// Reset the connection indicator during startup
 		this.setState('info.connection', false, true);
 
+		// get the Native secret for decryption
+		//		const systemObject = await this.getForeignObjectAsync('system.config', 'meta');
+		//		if (systemObject) {
+		//			secret = systemObject.native.secret ?? 'Zgfr56gFe87jJOM';
+		//		}
+		//		console.log(decrypt(secret, this.config.tableValues[0].password));
+
 		// The adapters config (in the instance object everything under the attribute "native") is accessible via
 		// this.config:
 		this.log.info('config option1: ' + this.config.option1);
 		this.log.info('config testInput: ' + this.config.testInput);
 
+		this.log.error('config password: ' + this.config.password);
 		/*
 		For every state in the system there has to be also an object of type state
 		Here a simple template for a boolean variable named "testVariable"

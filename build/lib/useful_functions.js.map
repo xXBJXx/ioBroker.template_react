@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../src/lib/useful_functions.ts"],
+  "sourcesContent": ["/**\n * function to decrypt a string\n */\nexport const decrypt = (key: string | any[], value: string): string => {\n\tlet result = '';\n\tfor (let i = 0; i < value.length; ++i) {\n\t\tresult += String.fromCharCode(key[i % key.length].charCodeAt(0) ^ value.charCodeAt(i));\n\t}\n\treturn result;\n};\n"],
+  "mappings": ";;;;;;;;;;;;;;;;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAGO,MAAM,UAAU,CAAC,KAAqB,UAA0B;AACtE,MAAI,SAAS;AACb,WAAS,IAAI,GAAG,IAAI,MAAM,QAAQ,EAAE,GAAG;AACtC,cAAU,OAAO,aAAa,IAAI,IAAI,IAAI,QAAQ,WAAW,CAAC,IAAI,MAAM,WAAW,CAAC,CAAC;AAAA,EACtF;AACA,SAAO;AACR;",
+  "names": []
+}

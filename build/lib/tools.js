@@ -1,3 +1,4 @@
+"use strict";
 var __create = Object.create;
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
@@ -16,7 +17,10 @@ var __copyProps = (to, from, except, desc) => {
   }
   return to;
 };
-var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(isNodeMode || !mod || !mod.__esModule ? __defProp(target, "default", { value: mod, enumerable: true }) : target, mod));
+var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(
+  isNodeMode || !mod || !mod.__esModule ? __defProp(target, "default", { value: mod, enumerable: true }) : target,
+  mod
+));
 var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
 var tools_exports = {};
 __export(tools_exports, {
@@ -52,7 +56,9 @@ async function translateYandex(text, targetLang, apiKey) {
     targetLang = "zh";
   }
   try {
-    const url = `https://translate.yandex.net/api/v1.5/tr.json/translate?key=${apiKey}&text=${encodeURIComponent(text)}&lang=en-${targetLang}`;
+    const url = `https://translate.yandex.net/api/v1.5/tr.json/translate?key=${apiKey}&text=${encodeURIComponent(
+      text
+    )}&lang=en-${targetLang}`;
     const response = await import_axios.default.request({ url, timeout: 15e3 });
     if (isArray((_a = response.data) == null ? void 0 : _a.text)) {
       return response.data.text[0];
@@ -65,7 +71,9 @@ async function translateYandex(text, targetLang, apiKey) {
 async function translateGoogle(text, targetLang) {
   var _a;
   try {
-    const url = `http://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=${targetLang}&dt=t&q=${encodeURIComponent(text)}&ie=UTF-8&oe=UTF-8`;
+    const url = `http://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=${targetLang}&dt=t&q=${encodeURIComponent(
+      text
+    )}&ie=UTF-8&oe=UTF-8`;
     const response = await import_axios.default.request({ url, timeout: 15e3 });
     if (isArray(response.data)) {
       return response.data[0][0][0];

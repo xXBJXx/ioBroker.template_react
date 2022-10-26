@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react';
-import { useDialogs, useI18n, useIoBrokerObject } from 'iobroker-react/hooks';
-import { IconButton, InputAdornment, TextField } from '@mui/material';
 import { ListAlt } from '@mui/icons-material';
+import { IconButton, InputAdornment, TextField } from '@mui/material';
+import { useDialogs, useI18n, useIoBrokerObject } from 'iobroker-react/hooks';
+import React, { useEffect } from 'react';
 
 interface SelectIDProps {
 	onChange: (id: keyof ioBroker.AdapterConfig, value: string) => void;
@@ -22,7 +22,7 @@ export const SelectID: React.FC<SelectIDProps> = ({ onChange, setting }) => {
 
 	// This will be called when the button is clicked and ask the user if they want to do this
 
-	const handleChange = (value) => {
+	const handleChange = (value: string | undefined) => {
 		if (typeof value !== 'undefined') {
 			setStateId(value);
 			setObjectId(value);
@@ -42,7 +42,7 @@ export const SelectID: React.FC<SelectIDProps> = ({ onChange, setting }) => {
 	// console.log('SelectID', objectId);
 	const askUser = React.useCallback(async () => {
 		const selected = await showSelectId({
-			title: 'Select an ID',
+			title: 'test',
 		});
 		handleChange(selected);
 	}, [showSelectId]);

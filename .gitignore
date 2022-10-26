@@ -12,9 +12,7 @@ iobroker.*.tgz
 
 Thumbs.db
 
-# NYC coverage files
-coverage
-
 # i18n intermediate files
 admin/i18n/flat.txt
 admin/i18n/*/flat.txt
+admin/src/.DS_Store
