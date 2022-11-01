@@ -31,7 +31,7 @@
 	"@iobroker/testing": "^2.6.0",
 	"@mui/icons-material": "^5.10.9",
 	"@mui/material": "^5.10.12",
-	"@mui/styles": "^5.10.7",
+	"@mui/styles": "^5.10.10",
 	"@types/chai": "^4.3.3",
 	"@types/chai-as-promised": "^7.1.5",
 	"@types/gulp": "^4.0.9",
