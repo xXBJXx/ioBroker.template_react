@@ -31,9 +31,6 @@ class TemplateReact extends utils.Adapter {
   }
   async onReady() {
     this.setState("info.connection", false, true);
-    this.log.info("config option1: " + this.config.option1);
-    this.log.info("config testInput: " + this.config.testInput);
-    this.log.error("config password: " + this.config.password);
     await this.setObjectNotExistsAsync("testVariable", {
       type: "state",
       common: {

@@ -4,26 +4,11 @@
 declare global {
 	namespace ioBroker {
 		interface Devices {
-			name: string;
+			room: string;
 			ip: string;
-			port: number;
-			topic: string;
-			enabled: boolean;
-			mqttEnabled: boolean;
 		}
 		interface AdapterConfig {
-			option1: boolean;
-			password: string;
 			devices: Devices[];
-			testInput: string;
-			testOutput: string;
-			stateID: string;
-			tableValues: {
-				name: string;
-				ip: string;
-				port: number;
-				password: string;
-			}[];
 		}
 	}
 }

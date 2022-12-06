@@ -43,10 +43,10 @@ class TemplateReact extends utils.Adapter {
 
 		// The adapters config (in the instance object everything under the attribute "native") is accessible via
 		// this.config:
-		this.log.info('config option1: ' + this.config.option1);
-		this.log.info('config testInput: ' + this.config.testInput);
-
-		this.log.error('config password: ' + this.config.password);
+		// this.log.info('config option1: ' + this.config.option1);
+		// this.log.info('config testInput: ' + this.config.testInput);
+		//
+		// this.log.error('config password: ' + this.config.password);
 		/*
 		For every state in the system there has to be also an object of type state
 		Here a simple template for a boolean variable named "testVariable"

@@ -86,12 +86,12 @@
 	"password"
   ],
   "native": {
-	"option1": true,
-	"password": "",
-	"testInput": "",
-	"testOutput": "",
-	"stateID": "",
-	"tableValues": []
+	"devices": [
+	  {
+		"room": "",
+		"ip": "",
+	  }
+	]
   },
   "objects": [],
   "instanceObjects": [
