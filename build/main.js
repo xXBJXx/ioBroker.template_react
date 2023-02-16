@@ -18,7 +18,9 @@ var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__ge
   mod
 ));
 var utils = __toESM(require("@iobroker/adapter-core"));
-let secret = "Zgfr56gFe87jJOM";
+var import_source_map_support = __toESM(require("source-map-support"));
+var import_translationFunktion = require("./lib/translationFunktion");
+import_source_map_support.default.install();
 class TemplateReact extends utils.Adapter {
   constructor(options = {}) {
     super({
@@ -31,6 +33,12 @@ class TemplateReact extends utils.Adapter {
   }
   async onReady() {
     this.setState("info.connection", false, true);
+    const systemObject = await this.getForeignObjectAsync("system.config", "meta");
+    if (systemObject) {
+      console.log("systemObject", systemObject);
+      (0, import_translationFunktion.setLocale)("de");
+    }
+    console.log("translation: ", (0, import_translationFunktion.translation)("datapoint"));
     this.log.info("config option1: " + this.config.option1);
     this.log.info("config testInput: " + this.config.testInput);
     this.log.error("config password: " + this.config.password);
@@ -52,7 +60,7 @@ class TemplateReact extends utils.Adapter {
     let result = await this.checkPasswordAsync("admin", "iobroker");
     this.log.info("check user admin pw iobroker: " + result);
     result = await this.checkGroupAsync("admin", "admin");
-    this.log.info("check group user admin group admin: " + result);
+    this.log.info((0, import_translationFunktion.translation)("checkGroup", result));
   }
   onUnload(callback) {
     try {

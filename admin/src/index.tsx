@@ -9,6 +9,7 @@ import type { Translations } from 'iobroker-react/i18n';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { SettingPage } from './SettingPage';
+import { SettingsHeader } from 'iobroker-react';
 
 // Components are imported here
 
@@ -32,6 +33,7 @@ const SettingsPageContent: React.FC = React.memo(() => {
 
 	return (
 		<React.Fragment>
+			<SettingsHeader />
 			<SettingPage settings={settings} changeSetting={(option, value) => handleChange(option, value)} />
 		</React.Fragment>
 	);

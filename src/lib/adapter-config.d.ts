@@ -18,11 +18,12 @@ declare global {
 			testInput: string;
 			testOutput: string;
 			stateID: string;
-			tableValues: {
-				name: string;
-				ip: string;
-				port: number;
-				password: string;
+			table: {
+				select: string[];
+				value: string;
+				type: boolean;
+				command: string;
+				desc: string;
 			}[];
 		}
 	}

@@ -1,9 +1,9 @@
 {
-  "template_react adapter settings": "Adapter settings for template_react",
-  "option1": "option1",
-  "tooltip": "this is a tooltip",
-  "textinput": "Text Input",
   "buttonOutput": "Button Output",
-  "datapoint": "ioBroker State"
-
+  "checkGroup": "check group user admin group admin: %s",
+  "datapoint": "ioBroker State",
+  "option1": "option1",
+  "template_react adapter settings": "Adapter settings for template_react",
+  "textinput": "Text Input",
+  "tooltip": "this is a tooltip"
 }

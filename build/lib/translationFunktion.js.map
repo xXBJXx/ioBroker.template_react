@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../src/lib/translationFunktion.ts"],
+  "sourcesContent": ["import { I18n } from 'i18n';\nimport path from 'path';\n\nconst i18n = new I18n({\n\tlocales: ['en', 'de', 'ru', 'pt', 'nl', 'fr', 'it', 'es', 'pl', 'uk', 'zh-cn'],\n\tdefaultLocale: 'en',\n\tdirectory: path.join('../../admin/src', 'i18n'),\n});\n\nexport const setLocale = (locale: string): void => {\n\ti18n.setLocale(locale);\n};\n\nexport const translation = (key: string, replace?: any): string => {\n\treturn i18n.__(key, replace ?? '');\n};\n"],
+  "mappings": ";;;;;;;;;;;;;;;;;;;;;;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA,kBAAqB;AACrB,kBAAiB;AAEjB,MAAM,OAAO,IAAI,iBAAK;AAAA,EACrB,SAAS,CAAC,MAAM,MAAM,MAAM,MAAM,MAAM,MAAM,MAAM,MAAM,MAAM,MAAM,OAAO;AAAA,EAC7E,eAAe;AAAA,EACf,WAAW,YAAAA,QAAK,KAAK,mBAAmB,MAAM;AAC/C,CAAC;AAEM,MAAM,YAAY,CAAC,WAAyB;AAClD,OAAK,UAAU,MAAM;AACtB;AAEO,MAAM,cAAc,CAAC,KAAa,YAA0B;AAClE,SAAO,KAAK,GAAG,KAAK,4BAAW,EAAE;AAClC;",
+  "names": ["path"]
+}

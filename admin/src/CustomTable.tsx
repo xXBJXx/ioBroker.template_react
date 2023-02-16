@@ -3,42 +3,66 @@
  */
 import { Delete } from '@mui/icons-material';
 import { IconButton, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
-import { useI18n, useIoBrokerObject } from 'iobroker-react/hooks';
-import { encrypt } from 'iobroker-react/lib/shared/tools';
+import { useI18n } from 'iobroker-react/hooks';
 import React, { useState } from 'react';
 import { AddModal } from './component/AddModal';
 import { Row } from './component/AddTableDialog';
 
+// import { Spacer } from './components/Spacer';
+
 interface CustomTableProps {
 	onChange: (
 		id: keyof ioBroker.AdapterConfig,
-		value: { name: string; ip: string; port: number; password: string }[],
+		value: { select: string[]; value: string; type: boolean; command: string; desc: string }[],
 	) => void;
 	setting: ioBroker.AdapterConfig;
 }
 
 export const CustomTable: React.FC<CustomTableProps> = ({ setting, onChange }): JSX.Element => {
-	// System Secret for encryption
-	const [systemConfigObj] = useIoBrokerObject('system.config');
-	const secret = systemConfigObj?.native?.secret || 'Zgfr56gFe87jJOM';
 	// Translation function
 	const { translate: _ } = useI18n();
 	// rows of the table
-	const [rows, setRows] = useState(setting.tableValues);
+	const [rows, setRows] = useState<ioBroker.AdapterConfig['table']>(setting.table);
 
 	//delete row
-	const handleDelete = (name: string) => {
-		const newRows = rows.filter((row) => row.name !== name);
+	const handleDelete = (index) => {
+		const newRows = rows.filter((row, i) => i !== index);
 		setRows(newRows);
-		onChange('tableValues', newRows);
+		onChange('table', newRows);
+		console.log(newRows);
 	};
 
 	//add row
 	const handleAdd = (value: Row | undefined) => {
 		if (value) {
-			const newRows = [...rows, value];
+			const newRows = [
+				...rows,
+				{
+					select: value.select,
+					value: value.value,
+					type: value.type,
+					command: value.command,
+					desc: value.desc,
+				},
+			];
+			console.log(`table `, value);
 			setRows(newRows);
-			onChange('tableValues', newRows);
+			onChange('table', newRows);
+		}
+	};
+
+	const handleEdit = (value: Row | undefined, index: number) => {
+		if (value) {
+			const newRows = [...rows];
+			newRows[index] = {
+				select: value.select,
+				value: value.value,
+				type: value.type,
+				command: value.command,
+				desc: value.desc,
+			};
+			setRows(newRows);
+			onChange('table', newRows);
 		}
 	};
 
@@ -46,32 +70,47 @@ export const CustomTable: React.FC<CustomTableProps> = ({ setting, onChange }): 
 
 	return (
 		<React.Fragment>
-			<AddModal newRow={(value) => handleAdd(value)} />
+			<AddModal mode={'add'} newRow={(value) => handleAdd(value)} />
 			<TableContainer component={Paper}>
-				<Table sx={{ minWidth: 650 }} size="small" aria-label="simple table">
+				<Table sx={{ minWidth: 650 }} size="medium" aria-label="simple table">
 					<TableHead>
 						<TableRow>
-							<TableCell align="center">{_('Name')}</TableCell>
-							<TableCell align="center">{_('IP')}</TableCell>
-							<TableCell align="center">{_('Port')}</TableCell>
-							<TableCell align="center">{_('Password')}</TableCell>
-							<TableCell align="center">{_('Action')}</TableCell>
+							<TableCell
+								align="center"
+								sx={{
+									fontWeight: 'bold',
+									width: '50px',
+								}}
+							>
+								{_('Id')}
+							</TableCell>
+							<TableCell align="center">{_('Command')}</TableCell>
+							<TableCell align="center">{_('Description')}</TableCell>
+							<TableCell align="center">{_('type')}</TableCell>
+							<TableCell align="center">{_('value')}</TableCell>
+							<TableCell align="center">{_('printer(s)')}</TableCell>
+							<TableCell align="center">{_('Actions')}</TableCell>
 						</TableRow>
 					</TableHead>
 					<TableBody>
 						{rows.map((row, index) => (
 							<TableRow
-								key={row.name + random()}
+								key={index + random() + random()}
 								sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
 							>
-								<TableCell id={'name'} align="center">
-									{row.name}
+								<TableCell id={'id'} align="center">
+									{index + 1}
 								</TableCell>
-								<TableCell align="center">{row.ip}</TableCell>
-								<TableCell align="center">{row.port}</TableCell>
-								<TableCell align="center">{encrypt(secret, row.password)}</TableCell>
+								<TableCell align="center">{row.command}</TableCell>
+								<TableCell align="center">{row.desc}</TableCell>
+								<TableCell align="center">
+									{row.type ? _('Send state value') : _(`Send defined value`)}
+								</TableCell>
+								<TableCell align="center">{row.value}</TableCell>
+								<TableCell align="center">{row.select.join(', ')}</TableCell>
 								<TableCell align={'center'}>
-									<IconButton aria-label="delete" onClick={() => handleDelete(row.name)}>
+									<AddModal mode={'edit'} editRow={handleEdit} oldRow={row} index={index} />
+									<IconButton aria-label="delete" onClick={() => handleDelete(index)}>
 										<Delete sx={{ color: 'red' }} />
 									</IconButton>
 								</TableCell>

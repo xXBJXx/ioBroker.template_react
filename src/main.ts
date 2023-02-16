@@ -5,10 +5,14 @@
 // The adapter-core module gives you access to the core ioBroker functions
 // you need to create an adapter
 import * as utils from '@iobroker/adapter-core';
-// Load your modules here, e.g.:
 
+// Load your modules here, e.g.:
+import sourceMapSupport from 'source-map-support';
+import { setLocale, translation as t } from './lib/translationFunktion';
+
+sourceMapSupport.install();
 // variable with the native-secret for decryption
-let secret: string | any[] = 'Zgfr56gFe87jJOM';
+// let secret: string | any[] = 'Zgfr56gFe87jJOM';
 
 // Global variables here
 
@@ -35,12 +39,15 @@ class TemplateReact extends utils.Adapter {
 		this.setState('info.connection', false, true);
 
 		// get the Native secret for decryption
-		//		const systemObject = await this.getForeignObjectAsync('system.config', 'meta');
-		//		if (systemObject) {
-		//			secret = systemObject.native.secret ?? 'Zgfr56gFe87jJOM';
-		//		}
-		//		console.log(decrypt(secret, this.config.tableValues[0].password));
+		const systemObject = await this.getForeignObjectAsync('system.config', 'meta');
+		if (systemObject) {
+			// secret = systemObject.native.secret ?? 'Zgfr56gFe87jJOM';
+			console.log('systemObject', systemObject);
+			// i18n.setLocale(systemObject.common.language); // set the locale
+			setLocale('de'); // set the locale
+		}
 
+		console.log('translation: ', t('datapoint')); // translation
 		// The adapters config (in the instance object everything under the attribute "native") is accessible via
 		// this.config:
 		this.log.info('config option1: ' + this.config.option1);
@@ -90,7 +97,8 @@ class TemplateReact extends utils.Adapter {
 		this.log.info('check user admin pw iobroker: ' + result);
 
 		result = await this.checkGroupAsync('admin', 'admin');
-		this.log.info('check group user admin group admin: ' + result);
+		// this.log.info('check group user admin group admin: ' + result);
+		this.log.info(t('checkGroup', result));
 	}
 
 	/**

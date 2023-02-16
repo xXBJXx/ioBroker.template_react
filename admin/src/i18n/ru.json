@@ -1,5 +1,6 @@
 {
-	"template_react adapter settings": "Настройки адаптера для template_react",
-	"option1": "Опция 1",
-	"option2": "option2"
+  "checkGroup": "",
+  "option1": "Опция 1",
+  "option2": "option2",
+  "template_react adapter settings": "Настройки адаптера для template_react"
 }
