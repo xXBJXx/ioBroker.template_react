@@ -3,6 +3,11 @@ on:
   schedule:
     #    - cron: '30 1 * * *'
     - cron: '0 19 * * *'
+  pull_request:
+    paths:
+      - .github/workflows/stale.yml
+    types:
+      - opened
 
 jobs:
   stale:
@@ -16,35 +21,40 @@ jobs:
       - uses: actions/stale@v7
         with:
           # The message to post on the issue when tagging it. If none provided, will not mark issues stale.
-          stale-issue-message: 'This issue has been automatically marked as stale because it has not had
-          recent activity. It will be closed if no further activity occurs within the next 7 days.
-          Please check if the issue is still relevant in the most current version of the adapter
-          and tell us. Also check that all relevant details, logs and reproduction steps
-          are included and update them if needed.
-          Thank you for your contributions.
-
-          Dieses Problem wurde automatisch als veraltet markiert, da es in letzter Zeit keine Aktivitäten gab.
-          Es wird geschlossen, wenn nicht innerhalb der nächsten 7 Tage weitere Aktivitäten stattfinden.
-          Bitte überprüft, ob das Problem auch in der aktuellsten Version des Adapters noch relevant ist,
-          und teilt uns dies mit. Überprüft auch, ob alle relevanten Details, Logs und Reproduktionsschritte
-          enthalten sind bzw. aktualisiert diese.
-          Vielen Dank für Eure Unterstützung.'
+          stale-issue-message: >
+            This issue has been automatically marked as stale because it has not had
+            recent activity. It will be closed if no further activity occurs within the next 7 days.
+            Please check if the issue is still relevant in the most current version of the adapter
+            and tell us. Also check that all relevant details, logs and reproduction steps
+            are included and update them if needed.
+            Thank you for your contributions.
+          
+            Dieses Problem wurde automatisch als veraltet markiert, da es in letzter Zeit keine Aktivitäten gab.
+            Es wird geschlossen, wenn nicht innerhalb der nächsten 7 Tage weitere Aktivitäten stattfinden.
+            Bitte überprüft, ob das Problem auch in der aktuellsten Version des Adapters noch relevant ist,
+            und teilt uns dies mit. Überprüft auch, ob alle relevanten Details, Logs und Reproduktionsschritte
+            enthalten sind bzw. aktualisiert diese.
+            Vielen Dank für Eure Unterstützung.
         
           # The message to post on the issue when closing it. If none provided, will not comment when closing an issue.
-          close-issue-message: 'This issue has been automatically closed because of inactivity. Please open a new
-          issue if still relevant and make sure to include all relevant details, logs and reproduction steps.
-          Thank you for your contributions.
-
-          Dieses Problem wurde aufgrund von Inaktivität automatisch geschlossen. Bitte öffnet ein
-          neues Issue, falls dies noch relevant ist und stellt sicher das alle relevanten Details,
-          Logs und Reproduktionsschritte enthalten sind.
-          Vielen Dank für Eure Unterstützung.'
+          close-issue-message: >
+            This issue has been automatically closed because of inactivity. Please open a new
+            issue if still relevant and make sure to include all relevant details, logs and reproduction steps.
+            Thank you for your contributions.
+          
+            Dieses Problem wurde aufgrund von Inaktivität automatisch geschlossen. Bitte öffnet ein
+            neues Issue, falls dies noch relevant ist und stellt sicher das alle relevanten Details,
+            Logs und Reproduktionsschritte enthalten sind.
+            Vielen Dank für Eure Unterstützung.
         
           # The number of days old an issue or a pull request can be before marking it stale. Set to -1 to never mark issues or pull requests as stale automatically.
-          days-before-stale: 1
+          days-before-stale: 30
         
           # The number of days to wait to close an issue or a pull request after it being marked stale. Set to -1 to never close stale issues or pull requests.
-          days-before-close: 2
+          days-before-close: 7
+        
+          #
+          close-issue-reason: not_planned
         
           # The label to apply when an issue is stale.
           stale-issue-label: 'wontfix, outdated'
@@ -53,7 +63,7 @@ jobs:
           close-issue-label: 'closed'
         
           # The labels that mean an issue is exempt from being marked stale. Separate multiple labels with commas (eg. "label1,label2").
-          exempt-issue-labels: 'enhancement, work-in-progress, security,bug'
+          exempt-issue-labels: 'enhancement, work-in-progress, security, bug'
         
           # The maximum number of operations per run, used to control rate limiting (GitHub API CRUD related).
           operations-per-run: 30
