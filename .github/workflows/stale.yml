@@ -3,11 +3,11 @@ on:
   schedule:
     #    - cron: '30 1 * * *'
     - cron: '0 19 * * *'
-  pull_request:
+  push:
     paths:
       - .github/workflows/stale.yml
-    types:
-      - opened
+    branches:
+      - main
 
 jobs:
   stale:
