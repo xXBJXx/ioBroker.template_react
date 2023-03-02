@@ -51,18 +51,18 @@ jobs:
             Logs und Reproduktionsschritte enthalten sind.
             Vielen Dank für Eure Unterstützung.
         
-          # The number of days old an issue or a pull request can be before marking it stale. Set to -1 to never mark issues or pull requests as stale automatically.
-          days-before-stale: 1
-        
-          # The number of days to wait to close an issue or a pull request after it being marked stale. Set to -1 to never close stale issues or pull requests.
-          days-before-close: 1
-        
-          #
+
+          # The number of days old an issue can be before marking it stale. Set to -1 to never mark issues as stale automatically. Override "days-before-stale" option regarding only the issues.
+          days-before-issue-stale: 1
+
+          # The number of days to wait to close an issue after it being marked stale. Set to -1 to never close stale issues. Override "days-before-close" option regarding only the issues.
+          days-before-issue-close: 1
+
           close-issue-reason: not_planned
         
           # The label to apply when an issue is stale.
-          stale-issue-label: 'wontfix, outdated'
-        
+          stale-issue-label: 'outdated'
+  
           # The label to apply when an issue is closed.
           close-issue-label: 'closed'
         
@@ -76,8 +76,11 @@ jobs:
           remove-stale-when-updated: true
         
           # A comma delimited list of labels to remove when a stale issue or pull request receives activity and has the stale-issue-label or stale-pr-label removed from it.
-          labels-to-remove-when-unstale: 'wontfix, outdated'
-        
+          labels-to-remove-when-unstale: 'outdated'
+          
+          # A comma delimited list of labels to add when a stale issue or pull request receives activity and has the stale-issue-label or stale-pr-label removed from it.
+          labels-to-add-when-unstale: 'work-in-progress'
+    
           # Token for the repository. Can be passed in using `{{ secrets.GITHUB_TOKEN }}`.
           repo-token: ${{ secrets.GITHUB_TOKEN }}
         
@@ -89,27 +92,27 @@ jobs:
         
           # The message to post on the pull request when closing it. If none provided, will not comment when closing a pull requests.
           # close-pr-message: 'This PR was closed because it has been stalled for 10 days with no activity.'
-        
-          # The number of days old an issue can be before marking it stale. Set to -1 to never mark issues as stale automatically. Override "days-before-stale" option regarding only the issues.
-          days-before-issue-stale: 20
+  
+          # The number of days old an issue or a pull request can be before marking it stale. Set to -1 to never mark issues or pull requests as stale automatically.
+#          days-before-stale: 1
         
           # The number of days old a pull request can be before marking it stale. Set to -1 to never mark pull requests as stale automatically. Override "days-before-stale" option regarding only the pull requests.
-          days-before-pr-stale: 40
-        
-          # The number of days to wait to close an issue after it being marked stale. Set to -1 to never close stale issues. Override "days-before-close" option regarding only the issues.
-          days-before-issue-close: 5
-        
+#          days-before-pr-stale: 40
+  
+          # The number of days to wait to close an issue or a pull request after it being marked stale. Set to -1 to never close stale issues or pull requests.
+#          days-before-close: 1
+          
           # The number of days to wait to close a pull request after it being marked stale. Set to -1 to never close stale pull requests. Override "days-before-close" option regarding only the pull requests.
-          days-before-pr-close: 10
+#          days-before-pr-close: 10
         
           # The label to apply when a pull request is stale.
-          stale-pr-label: 'wontfix, outdated'
+#          stale-pr-label: 'outdated'
         
           # The label to apply when a pull request is closed.
-          close-pr-label: 'closed'
+#          close-pr-label: 'closed'
         
           # The labels that mean a pull request is exempt from being marked as stale. Separate multiple labels with commas (eg. "label1,label2").
-          exempt-pr-labels: 'enhancement,work-in-progress,security,bug, dependencies'
+#          exempt-pr-labels: 'enhancement,work-in-progress,security, bug, dependencies'
         
           # Remove stale labels from issues when they are updated or commented on. Override "remove-stale-when-updated" option regarding only the issues.
           # remove-issue-stale-when-updated: true
@@ -117,9 +120,7 @@ jobs:
           # Remove stale labels from pull requests when they are updated or commented on. Override "remove-stale-when-updated" option regarding only the pull requests.
           # remove-pr-stale-when-updated: true
         
-          # A comma delimited list of labels to add when a stale issue or pull request receives activity and has the stale-issue-label or stale-pr-label removed from it.
-          # labels-to-add-when-unstale: 'work-in-progress'
-        
+
           # Any update (update/comment) can reset the stale idle time on the issues and pull requests. Set to false to only consider pull request/issue updates.
           # ignore-updates: false
         
