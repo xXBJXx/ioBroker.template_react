@@ -22,7 +22,7 @@ jobs:
       pull-requests: write
     
     steps:
-      - uses: actions/stale@v7
+      - uses: actions/stale@v8
         with:
           # The message to post on the issue when tagging it. If none provided, will not mark issues stale.
           stale-issue-message: >
